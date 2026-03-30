@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valéria Neves — Direito da Saúde · Advocacia Humanizada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  /* Paleta Valéria — quente, íntima, elegante */
+  --ivory:   #FAF7F2;
+  --linen:   #F3EDE3;
+  --blush:   #E8D5C4;
+  --rose:    #C4896A;       /* acento quente principal */
+  --rose-lt: #D4A088;
+  --rose-dk: #9E6A4E;
+  --rose-dim:rgba(196,137,106,0.12);
+  --rose-mid:rgba(196,137,106,0.22);
+  --taupe:   #8C7B6E;
+  --ink:     #2C2420;       /* quase preto quente */
+  --muted:   rgba(44,36,32,0.55);
+  --muted2:  rgba(44,36,32,0.35);
+  --border:  rgba(196,137,106,0.18);
+  --border2: rgba(196,137,106,0.08);
+  /* gold — fio condutor com Sitorski */
+  --gold:    #A78973;
+  --gold-lt: #BFA090;
+  /* azul só aparece como sotaque discreto */
+  --blue:    #113E61;
+  --green:   #3a7a55;
+}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Jost',sans-serif;
+  background:var(--ivory);
+  color:var(--ink);
+  overflow-x:hidden;
+}
+
+/* GRAIN TEXTURE */
+body::after{
+  content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;
+  opacity:.022;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:140px;
+}
+
+/* ══ NAV ══ */
+nav{
+  position:fixed;top:0;width:100%;z-index:500;
+  height:72px;padding:0 64px;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:all .5s;
+}
+nav.scrolled{
+  background:rgba(250,247,242,.96);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  box-shadow:0 2px 40px rgba(196,137,106,.08);
+}
+.nav-logo{
+  text-decoration:none;
+  display:flex;align-items:center;gap:14px;
+}
+.nav-logo-mark{
+  width:36px;height:36px;border-radius:50%;
+  border:1.5px solid var(--rose);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;
+  font-size:16px;font-weight:500;color:var(--rose);
+  letter-spacing:.5px;
+}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1;}
+.nav-logo-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;color:var(--ink);letter-spacing:.5px;}
+.nav-logo-sub{font-size:9px;font-weight:400;letter-spacing:2.5px;text-transform:uppercase;color:var(--taupe);margin-top:3px;}
+.nav-links{display:flex;gap:36px;list-style:none;align-items:center;}
+.nav-links a{font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--rose);}
+.nav-cta{
+  background:var(--rose);color:#fff;
+  padding:10px 24px;border-radius:40px;
+  font-family:'Jost',sans-serif;font-size:10px;font-weight:600;
+  letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;
+  transition:all .3s;display:flex;align-items:center;gap:8px;
+  box-shadow:0 4px 20px rgba(196,137,106,.3);
+}
+.nav-cta:hover{background:var(--rose-dk);transform:translateY(-1px);box-shadow:0 8px 28px rgba(196,137,106,.4);}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:6px;cursor:pointer;}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--ink);transition:all .3s;}
+.mob-menu{position:fixed;inset:0;z-index:600;background:var(--ivory);display:flex;flex-direction:column;justify-content:center;padding:60px 48px;transform:translateX(100%);transition:transform .5s cubic-bezier(.4,0,.2,1);}
+.mob-menu.open{transform:translateX(0);}
+.mob-close{position:absolute;top:28px;right:32px;background:none;border:none;font-size:22px;color:var(--rose);cursor:pointer;}
+.mob-menu a{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,9vw,56px);font-weight:400;font-style:italic;color:var(--muted);text-decoration:none;padding:10px 0;border-bottom:1px solid var(--border);display:block;transition:color .2s,padding-left .2s;}
+.mob-menu a:hover{color:var(--rose);padding-left:12px;}
+
+/* ══ HERO ══ */
+.hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  overflow:hidden;
+  position:relative;
+}
+
+/* LEFT: foto / visual quente */
+.hero-visual{
+  position:relative;overflow:hidden;
+  background:var(--linen);
+}
+/* Organic background blob */
+.hero-visual::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 70% at 40% 60%,rgba(196,137,106,.18) 0%,transparent 65%),
+    radial-gradient(ellipse 50% 40% at 80% 20%,rgba(196,137,106,.08) 0%,transparent 55%);
+}
+.hero-photo-wrap{
+  position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;
+  z-index:1;
+}
+.hero-photo-placeholder{
+  width:100%;height:88%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:16px;
+}
+.hero-photo-icon{font-size:80px;opacity:.2;}
+.hero-photo-label{font-size:10px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--muted2);}
+
+/* floating card bottom-left */
+.hero-card-stat{
+  position:absolute;bottom:48px;left:40px;z-index:3;
+  background:rgba(250,247,242,.92);
+  backdrop-filter:blur(16px);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:20px 24px;
+  box-shadow:0 8px 40px rgba(44,36,32,.1);
+  animation:floatIn .9s ease .6s both;
+}
+.hcs-row{display:flex;gap:28px;}
+.hcs-stat{}
+.hcs-num{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:600;line-height:1;color:var(--rose);}
+.hcs-num sup{font-size:16px;}
+.hcs-lbl{font-size:9px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted2);margin-top:3px;}
+
+/* floating badge top-right */
+.hero-badge-live{
+  position:absolute;top:48px;right:36px;z-index:3;
+  background:rgba(250,247,242,.92);
+  backdrop-filter:blur(12px);
+  border:1px solid var(--border);
+  border-radius:40px;
+  padding:10px 18px;
+  display:flex;align-items:center;gap:9px;
+  animation:floatIn .9s ease .4s both;
+}
+.hbl-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px rgba(58,122,85,.5);flex-shrink:0;}
+.hbl-txt{font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--ink);}
+
+/* decorative circle outline */
+.hero-circle{
+  position:absolute;bottom:-80px;right:-80px;
+  width:360px;height:360px;border-radius:50%;
+  border:1px solid rgba(196,137,106,.12);
+  z-index:0;
+}
+.hero-circle2{
+  position:absolute;top:-60px;left:-60px;
+  width:260px;height:260px;border-radius:50%;
+  border:1px solid rgba(196,137,106,.08);
+  z-index:0;
+}
+
+/* RIGHT: texto */
+.hero-content{
+  padding:110px 72px 80px;
+  display:flex;flex-direction:column;
+  justify-content:center;
+  position:relative;z-index:2;
+  background:var(--ivory);
+}
+.hero-content::before{
+  content:'';position:absolute;left:0;top:10%;bottom:10%;width:1px;
+  background:linear-gradient(to bottom,transparent,var(--rose-dim),var(--rose-dim),transparent);
+}
+.hero-eyebrow{
+  display:flex;align-items:center;gap:14px;margin-bottom:32px;
+  animation:fadeUp .8s ease .1s both;
+}
+.hero-eye-line{width:32px;height:1px;background:var(--rose);}
+.hero-eye-txt{font-size:9px;font-weight:500;letter-spacing:3.5px;text-transform:uppercase;color:var(--taupe);}
+.hero-h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(48px,4.8vw,78px);
+  font-weight:400;line-height:1.08;letter-spacing:-.5px;
+  color:var(--ink);margin-bottom:28px;
+  animation:fadeUp .8s ease .18s both;
+}
+.hero-h1 em{font-style:italic;color:var(--rose);display:block;}
+.hero-h1 strong{font-weight:600;}
+.hero-sub{
+  font-size:16px;font-weight:300;line-height:1.85;
+  color:var(--muted);max-width:420px;margin-bottom:44px;
+  animation:fadeUp .8s ease .28s both;
+}
+.hero-sub b{font-weight:600;color:var(--ink);}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:52px;animation:fadeUp .8s ease .36s both;}
+
+.btn-rose{
+  background:var(--rose);color:#fff;
+  padding:15px 32px;border-radius:40px;
+  font-family:'Jost',sans-serif;font-size:11px;font-weight:600;
+  letter-spacing:1.5px;text-transform:uppercase;border:none;
+  text-decoration:none;display:inline-flex;align-items:center;gap:10px;
+  transition:all .3s;box-shadow:0 6px 24px rgba(196,137,106,.32);
+}
+.btn-rose:hover{background:var(--rose-dk);transform:translateY(-2px);box-shadow:0 12px 36px rgba(196,137,106,.42);}
+.btn-outline{
+  background:transparent;color:var(--ink);
+  padding:14px 32px;border-radius:40px;
+  font-family:'Jost',sans-serif;font-size:11px;font-weight:500;
+  letter-spacing:1.5px;text-transform:uppercase;
+  border:1.5px solid var(--blush);
+  text-decoration:none;display:inline-block;transition:all .3s;
+}
+.btn-outline:hover{border-color:var(--rose);color:var(--rose);}
+
+/* trust row */
+.hero-trust{
+  display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+  animation:fadeUp .8s ease .44s both;
+}
+.ht-item{display:flex;align-items:center;gap:8px;}
+.ht-icon{width:32px;height:32px;border-radius:50%;background:var(--rose-dim);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+.ht-txt{font-size:11px;font-weight:400;color:var(--muted);}
+.ht-txt b{font-weight:600;color:var(--ink);display:block;}
+.ht-sep{width:1px;height:28px;background:var(--border);}
+
+/* ══ RIBBON ══ */
+.ribbon{background:var(--rose);overflow:hidden;padding:12px 0;}
+.ribbon-inner{display:flex;animation:ticker 35s linear infinite;width:max-content;}
+.r-item{
+  display:flex;align-items:center;gap:18px;padding:0 32px;
+  font-family:'Jost',sans-serif;font-size:10px;font-weight:500;
+  letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.85);white-space:nowrap;
+}
+.r-sep{color:rgba(255,255,255,.35);font-size:10px;}
+
+/* ══ SECTIONS ══ */
+section{padding:108px 80px;position:relative;z-index:1;}
+.s-tag{
+  display:inline-flex;align-items:center;gap:10px;margin-bottom:20px;
+}
+.s-tag-line{width:28px;height:1px;background:var(--rose);}
+.s-tag-txt{font-size:9px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--rose);}
+.s-h{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(36px,3.8vw,58px);font-weight:400;
+  line-height:1.08;letter-spacing:-.3px;margin-bottom:18px;color:var(--ink);
+}
+.s-h em{font-style:italic;color:var(--rose);}
+.s-h strong{font-weight:600;}
+.s-p{font-size:15px;font-weight:300;line-height:1.9;color:var(--muted);max-width:520px;}
+
+/* ══ SOBRE — quem é ela ══ */
+.sec-sobre{background:#fff;}
+.sobre-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center;}
+.sobre-text{}
+.sobre-quote{
+  border-left:2px solid var(--rose);
+  padding:20px 28px;margin:36px 0;
+  background:var(--rose-dim);border-radius:0 12px 12px 0;
+}
+.sobre-quote p{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:400;font-style:italic;
+  line-height:1.65;color:var(--rose-dk);
+}
+.sobre-quote cite{font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--taupe);margin-top:12px;display:block;font-style:normal;}
+.sobre-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:32px;}
+.pill{
+  font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;
+  padding:8px 18px;border-radius:40px;
+  background:var(--rose-dim);color:var(--rose-dk);
+  border:1px solid var(--border);
+  transition:all .25s;
+}
+.pill:hover{background:var(--rose);color:#fff;}
+
+/* Visual lado direito */
+.sobre-visual{position:relative;}
+.sobre-photo{
+  aspect-ratio:4/5;background:var(--linen);border-radius:24px;
+  overflow:hidden;position:relative;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;
+  border:1px solid var(--border);
+}
+.sobre-photo-icon{font-size:64px;opacity:.18;}
+.sobre-photo-label{font-size:9px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted2);}
+.sobre-photo::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 60% at 50% 30%,rgba(196,137,106,.1) 0%,transparent 65%);
+}
+/* floating name card */
+.sobre-name-card{
+  position:absolute;bottom:-20px;left:-20px;
+  background:#fff;border:1px solid var(--border);
+  border-radius:16px;padding:18px 22px;
+  box-shadow:0 8px 40px rgba(196,137,106,.15);
+  z-index:2;
+}
+.snc-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--ink);}
+.snc-role{font-size:9px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--rose);margin-top:4px;}
+.snc-oab{font-size:9px;font-weight:400;letter-spacing:1px;color:var(--muted2);margin-top:2px;}
+/* accent circle */
+.sobre-acc-circle{
+  position:absolute;top:-24px;right:-24px;
+  width:88px;height:88px;border-radius:50%;
+  background:var(--rose-dim);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-size:11px;font-weight:500;
+  color:var(--rose-dk);text-align:center;line-height:1.3;
+  letter-spacing:.5px;
+}
+
+/* ══ DOR ══ */
+.sec-dor{background:var(--linen);}
+.dor-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border-radius:20px;overflow:hidden;border:1px solid var(--border);}
+.dor-card{
+  background:#fff;padding:40px 36px;
+  transition:background .3s;cursor:default;
+  position:relative;
+}
+.dor-card:hover{background:var(--ivory);}
+.dor-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--rose),transparent);
+  opacity:0;transition:opacity .35s;border-radius:0;
+}
+.dor-card:hover::before{opacity:1;}
+.dor-card-icon{font-size:28px;margin-bottom:16px;}
+.dor-card-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;margin-bottom:10px;color:var(--ink);}
+.dor-card-desc{font-size:13px;font-weight:300;color:var(--muted);line-height:1.85;}
+.dor-intro{margin-bottom:60px;}
+.dor-cta-inline{
+  display:inline-flex;align-items:center;gap:8px;margin-top:14px;
+  font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--rose);text-decoration:none;border-bottom:1px solid var(--rose-mid);
+  padding-bottom:2px;transition:gap .2s,border-color .2s;
+}
+.dor-cta-inline:hover{gap:14px;border-color:var(--rose);}
+
+/* alert strip */
+.alert-strip{
+  margin-top:48px;
+  background:var(--rose-dim);border:1px solid var(--border);
+  border-left:3px solid var(--rose);
+  border-radius:0 14px 14px 0;
+  padding:24px 28px;
+}
+.as-label{font-size:9px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--rose-dk);margin-bottom:10px;}
+.as-text{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;font-weight:400;line-height:1.65;color:var(--ink);}
+.as-sub{font-size:11px;font-weight:400;color:var(--muted2);margin-top:8px;}
+
+/* ══ SERVIÇOS ══ */
+.sec-servicos{background:#fff;}
+.serv-head{margin-bottom:64px;}
+.serv-list{display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden;}
+.serv-row{
+  display:flex;gap:0;align-items:stretch;
+  background:#fff;transition:background .3s;cursor:default;
+}
+.serv-row:hover{background:var(--ivory);}
+.serv-row-num{
+  width:80px;flex-shrink:0;
+  border-right:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:300;
+  color:var(--rose);opacity:.25;
+  transition:opacity .3s;padding:32px 0;
+}
+.serv-row:hover .serv-row-num{opacity:.7;}
+.serv-row-content{flex:1;padding:32px 36px;display:flex;align-items:center;gap:32px;}
+.serv-row-icon{font-size:26px;flex-shrink:0;}
+.serv-row-body{flex:1;}
+.serv-row-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;margin-bottom:6px;color:var(--ink);}
+.serv-row-desc{font-size:13px;font-weight:300;color:var(--muted);line-height:1.8;}
+.serv-row-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+.serv-tag{font-size:9px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:40px;background:var(--rose-dim);color:var(--rose-dk);border:1px solid var(--border);}
+.serv-row-arrow{flex-shrink:0;font-size:20px;color:var(--rose);opacity:0;transition:opacity .3s,transform .3s;}
+.serv-row:hover .serv-row-arrow{opacity:1;transform:translateX(4px);}
+/* featured row */
+.serv-row.feat{background:var(--rose);}
+.serv-row.feat .serv-row-title{color:#fff;}
+.serv-row.feat .serv-row-desc{color:rgba(255,255,255,.7);}
+.serv-row.feat .serv-row-num{color:#fff;border-right-color:rgba(255,255,255,.2);opacity:.4;}
+.serv-row.feat .serv-tag{background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);border-color:rgba(255,255,255,.2);}
+.serv-row.feat .serv-row-arrow{color:#fff;opacity:.6;}
+.serv-row.feat:hover{background:var(--rose-dk);}
+
+/* ══ MÉTODO ══ */
+.sec-metodo{background:var(--linen);padding:0;overflow:hidden;}
+.metodo-wrap{display:grid;grid-template-columns:420px 1fr;}
+.met-left{
+  padding:100px 64px;
+  display:flex;flex-direction:column;justify-content:center;
+  border-right:1px solid var(--border);
+  background:#fff;
+}
+.met-right{padding:80px 72px 80px;}
+.met-steps{display:flex;flex-direction:column;gap:0;}
+.met-step{
+  display:grid;grid-template-columns:56px 32px 1fr;align-items:start;
+  gap:0 24px;padding:32px 0;border-bottom:1px solid var(--border);
+  cursor:default;transition:padding-left .25s;
+}
+.met-step:last-child{border-bottom:none;}
+.met-step:hover{padding-left:8px;}
+.met-step-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:52px;font-weight:300;line-height:1;
+  color:var(--rose);opacity:.2;transition:opacity .3s;
+  grid-row:1/3;
+}
+.met-step:hover .met-step-num{opacity:.6;}
+.met-step-icon{font-size:22px;grid-row:1;margin-top:8px;}
+.met-step-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;margin-bottom:6px;color:var(--ink);}
+.met-step-desc{font-size:13px;font-weight:300;color:var(--muted);line-height:1.85;grid-column:3;grid-row:2;}
+
+/* ══ DEPOIMENTOS ══ */
+.sec-dep{background:#fff;}
+.dep-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;flex-wrap:wrap;gap:20px;}
+.dep-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.dep-card{
+  background:var(--ivory);border:1px solid var(--border);
+  border-radius:20px;padding:36px 30px;
+  transition:transform .3s,box-shadow .3s;
+  cursor:default;
+}
+.dep-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(196,137,106,.15);}
+.dep-stars{color:var(--rose);font-size:13px;letter-spacing:3px;margin-bottom:18px;}
+.dep-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:19px;font-weight:400;font-style:italic;
+  line-height:1.7;color:var(--ink);margin-bottom:24px;
+}
+.dep-author{display:flex;gap:12px;align-items:center;padding-top:18px;border-top:1px solid var(--border);}
+.dep-init{
+  width:40px;height:40px;border-radius:50%;
+  background:var(--rose-dim);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:var(--rose);flex-shrink:0;
+}
+.dep-name{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:var(--ink);}
+.dep-role{font-size:10px;font-weight:400;color:var(--muted2);margin-top:2px;letter-spacing:.3px;}
+
+/* ══ URGÊNCIA ══ */
+.sec-urgencia{background:var(--ivory);padding:0;overflow:hidden;}
+.urg-wrap{display:grid;grid-template-columns:1fr 1fr;}
+.urg-left{
+  padding:100px 80px;
+  display:flex;flex-direction:column;justify-content:center;
+  background:var(--rose);
+  position:relative;overflow:hidden;
+}
+.urg-left::before{
+  content:'';position:absolute;
+  width:500px;height:500px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.08);
+  bottom:-200px;right:-150px;
+}
+.urg-left::after{
+  content:'';position:absolute;
+  width:300px;height:300px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.08);
+  top:-100px;left:-80px;
+}
+.urg-left-c{position:relative;z-index:1;}
+.urg-left .s-tag-txt{color:rgba(255,255,255,.7);}
+.urg-left .s-tag-line{background:rgba(255,255,255,.5);}
+.urg-left .s-h{color:#fff;}
+.urg-left .s-h em{color:rgba(255,255,255,.75);}
+.urg-left .s-p{color:rgba(255,255,255,.75);max-width:380px;}
+.urg-quote{
+  margin-top:32px;
+  border-left:2px solid rgba(255,255,255,.4);
+  padding:16px 24px;
+}
+.urg-quote p{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;font-weight:400;line-height:1.65;color:rgba(255,255,255,.9);}
+.urg-quote cite{font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:8px;display:block;font-style:normal;}
+.btn-white{
+  background:#fff;color:var(--rose-dk);
+  padding:14px 32px;border-radius:40px;
+  font-family:'Jost',sans-serif;font-size:11px;font-weight:600;
+  letter-spacing:1.5px;text-transform:uppercase;
+  text-decoration:none;display:inline-flex;align-items:center;gap:10px;
+  transition:all .3s;margin-top:36px;
+  box-shadow:0 6px 24px rgba(44,36,32,.15);
+}
+.btn-white:hover{background:var(--ivory);transform:translateY(-1px);}
+.urg-right{
+  padding:80px 72px;
+  display:flex;flex-direction:column;justify-content:center;
+  background:#fff;border-left:1px solid var(--border);
+}
+.urg-items{display:flex;flex-direction:column;gap:0;}
+.urg-item{
+  display:flex;gap:18px;padding:24px 0;border-bottom:1px solid var(--border);
+  cursor:default;
+}
+.urg-item:last-child{border-bottom:none;}
+.urg-dot-wrap{padding-top:6px;flex-shrink:0;}
+.urg-dot{width:10px;height:10px;border-radius:50%;}
+.dot-rose{background:var(--rose);box-shadow:0 0 10px rgba(196,137,106,.5);}
+.dot-warm{background:var(--blush);}
+.urg-label{font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--rose);margin-bottom:5px;}
+.urg-title{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;margin-bottom:6px;color:var(--ink);}
+.urg-desc{font-size:12.5px;font-weight:300;color:var(--muted);line-height:1.8;}
+
+/* ══ FAQ ══ */
+.sec-faq{background:var(--linen);}
+.faq-wrap{display:grid;grid-template-columns:1fr 420px;gap:80px;align-items:start;}
+.faq-list{display:flex;flex-direction:column;}
+.faq-q{
+  padding:22px 0;border-bottom:1px solid var(--border);cursor:pointer;
+  display:flex;justify-content:space-between;align-items:flex-start;gap:20px;
+}
+.faq-q-text{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;line-height:1.4;color:var(--ink);}
+.faq-chevron{
+  width:28px;height:28px;border-radius:50%;border:1.5px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--rose);font-size:16px;transition:all .3s;flex-shrink:0;margin-top:2px;
+}
+.faq-q.open .faq-chevron{background:var(--rose);color:#fff;border-color:var(--rose);transform:rotate(45deg);}
+.faq-a{font-size:13.5px;font-weight:300;color:var(--muted);line-height:1.9;padding:0 0 24px;display:none;}
+.faq-a.open{display:block;}
+/* sticky CTA card */
+.faq-cta{
+  background:var(--rose);border-radius:24px;
+  padding:48px 36px;position:sticky;top:100px;
+  color:#fff;
+}
+.faq-cta .s-tag-line{background:rgba(255,255,255,.4);}
+.faq-cta .s-tag-txt{color:rgba(255,255,255,.7);}
+.faq-cta-h{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:400;line-height:1.25;margin-bottom:16px;color:#fff;}
+.faq-cta-h em{font-style:italic;color:rgba(255,255,255,.8);}
+.faq-cta-p{font-size:14px;font-weight:300;line-height:1.85;color:rgba(255,255,255,.75);margin-bottom:30px;}
+.faq-cta-note{font-size:10px;font-weight:400;color:rgba(255,255,255,.45);text-align:center;margin-top:14px;letter-spacing:.5px;}
+
+/* ══ PARCERIA ══ */
+.sec-parceria{
+  background:#fff;border-top:1px solid var(--border);
+  padding:52px 80px;
+}
+.parc-inner{
+  display:flex;align-items:center;gap:40px;
+  justify-content:center;flex-wrap:wrap;
+}
+.parc-vn{
+  font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;
+  color:var(--rose);letter-spacing:.5px;
+  display:flex;flex-direction:column;
+}
+.parc-vn small{font-size:9px;font-weight:400;letter-spacing:2.5px;text-transform:uppercase;color:var(--taupe);margin-top:3px;font-family:'Jost',sans-serif;}
+.parc-div{width:1px;height:48px;background:var(--border);}
+.parc-txt{max-width:440px;font-size:13px;font-weight:300;color:var(--muted);line-height:1.8;}
+.parc-txt strong{font-weight:600;color:var(--ink);}
+.parc-si{
+  display:flex;flex-direction:column;
+  font-family:'Jost',sans-serif;font-size:15px;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;color:var(--blue);
+}
+.parc-si small{font-size:8px;font-weight:400;letter-spacing:2px;color:rgba(17,62,97,.4);margin-top:4px;text-transform:uppercase;}
+
+/* ══ CTA FINAL ══ */
+.sec-cta{
+  background:var(--ink);
+  padding:110px 80px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.sec-cta::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 70% at 50% 50%,rgba(196,137,106,.12) 0%,transparent 65%);
+}
+/* big circle decoration */
+.sec-cta::after{
+  content:'';position:absolute;
+  width:600px;height:600px;border-radius:50%;
+  border:1px solid rgba(196,137,106,.08);
+  top:50%;left:50%;transform:translate(-50%,-50%);
+}
+.cta-inner{position:relative;z-index:1;max-width:600px;margin:0 auto;}
+.cta-eyebrow{font-size:9px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--rose-lt);margin-bottom:20px;}
+.cta-h{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,4vw,62px);font-weight:400;line-height:1.1;color:var(--ivory);margin-bottom:20px;}
+.cta-h em{font-style:italic;color:var(--rose-lt);}
+.cta-p{font-size:16px;font-weight:300;color:rgba(243,237,227,.6);line-height:1.9;margin-bottom:44px;}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+
+/* ══ FOOTER ══ */
+footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.06);padding:72px 80px 44px;}
+.footer-inner{display:grid;grid-template-columns:1fr 1fr 1fr;gap:60px;margin-bottom:48px;}
+.footer-brand-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;color:var(--rose-lt);letter-spacing:.5px;margin-bottom:4px;}
+.footer-brand-sub{font-size:9px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:rgba(243,237,227,.3);margin-bottom:16px;}
+.footer-brand-p{font-size:12.5px;font-weight:300;line-height:1.85;color:rgba(243,237,227,.4);}
+.footer-col-title{font-size:9px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:rgba(243,237,227,.3);margin-bottom:20px;}
+.footer-links{display:flex;flex-direction:column;gap:10px;}
+.footer-links a{font-size:13px;font-weight:300;color:rgba(243,237,227,.5);text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:var(--rose-lt);}
+.footer-contact{}
+.fci{margin-bottom:14px;}
+.fci-label{font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(243,237,227,.3);margin-bottom:3px;}
+.fci-val{font-size:13px;font-weight:300;color:rgba(243,237,227,.5);}
+.fci-val a{color:rgba(243,237,227,.5);text-decoration:none;transition:color .2s;}
+.fci-val a:hover{color:var(--rose-lt);}
+.footer-bar{border-top:1px solid rgba(255,255,255,.06);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.footer-bar-txt{font-size:11px;font-weight:300;color:rgba(243,237,227,.25);}
+.footer-bar-oab{font-size:11px;font-weight:500;letter-spacing:1.5px;color:var(--rose-lt);opacity:.5;}
+
+/* ══ ANIMATIONS ══ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+@keyframes floatIn{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+@keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-delay{transition-delay:.15s;}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:1080px){
+  nav{padding:0 32px;}
+  section{padding:72px 40px;}
+  .hero{grid-template-columns:1fr;}
+  .hero-visual{display:none;}
+  .hero-content{padding:110px 40px 72px;}
+  .sobre-grid,.dor-grid,.sec-urgencia .urg-wrap,.metodo-wrap,.faq-wrap{grid-template-columns:1fr;}
+  .serv-row-content{flex-wrap:wrap;}
+  .dep-grid{grid-template-columns:1fr;}
+  .footer-inner{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .parc-inner{flex-direction:column;text-align:center;}
+  .parc-div{width:80px;height:1px;}
+  .met-left{border-right:none;border-bottom:1px solid var(--border);}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">VN</div>
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">Valéria Neves</span>
+      <span class="nav-logo-sub">Advocacia Humanizada</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#metodo">Como atendo</a></li>
+    <li><a href="#depoimentos">Histórias</a></li>
+    <li><a href="#faq">Dúvidas</a></li>
+  </ul>
+  <a href="https://wa.me/5567999999999" class="nav-cta" target="_blank">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Fale comigo
+  </a>
+  <button class="hamburger" onclick="document.querySelector('.mob-menu').classList.add('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu">
+  <button class="mob-close" onclick="this.parentElement.classList.remove('open')">✕</button>
+  <a href="#sobre" onclick="this.parentElement.classList.remove('open')">Sobre</a>
+  <a href="#servicos" onclick="this.parentElement.classList.remove('open')">Serviços</a>
+  <a href="#metodo" onclick="this.parentElement.classList.remove('open')">Como atendo</a>
+  <a href="#depoimentos" onclick="this.parentElement.classList.remove('open')">Histórias</a>
+  <a href="#faq" onclick="this.parentElement.classList.remove('open')">Dúvidas</a>
+  <a href="https://wa.me/5567999999999" target="_blank">WhatsApp →</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <!-- Visual esquerdo -->
+  <div class="hero-visual">
+    <div class="hero-circle"></div>
+    <div class="hero-circle2"></div>
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-placeholder">
+        <div class="hero-photo-icon">👩‍⚖️</div>
+        <div class="hero-photo-label">Foto de Valéria Neves</div>
+      </div>
+    </div>
+    <!-- floating badge -->
+    <div class="hero-badge-live">
+      <div class="hbl-dot"></div>
+      <div class="hbl-txt">Atendendo agora</div>
+    </div>
+    <!-- floating stats -->
+    <div class="hero-card-stat">
+      <div class="hcs-row">
+        <div class="hcs-stat">
+          <div class="hcs-num">+15<sup>a</sup></div>
+          <div class="hcs-lbl">de experiência</div>
+        </div>
+        <div style="width:1px;background:var(--border);flex-shrink:0;"></div>
+        <div class="hcs-stat">
+          <div class="hcs-num">97<sup>%</sup></div>
+          <div class="hcs-lbl">liminares obtidas</div>
+        </div>
+        <div style="width:1px;background:var(--border);flex-shrink:0;"></div>
+        <div class="hcs-stat">
+          <div class="hcs-num">800<sup>+</sup></div>
+          <div class="hcs-lbl">famílias atendidas</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Conteúdo direito -->
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="hero-eye-line"></span>
+      <span class="hero-eye-txt">Direito da Saúde · MS &amp; RJ</span>
+    </div>
+    <h1 class="hero-h1">
+      Quando a saúde
+      <em>não pode esperar,</em>
+      <strong>o direito age.</strong>
+    </h1>
+    <p class="hero-sub">
+      Plano negou? SUS demorou? Tratamento oncológico recusado?<br>
+      <b>Você tem direito — e eu estou aqui para garantir isso.</b>
+    </p>
+    <div class="hero-btns">
+      <a href="https://wa.me/5567999999999" class="btn-rose" target="_blank">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Analisar meu caso
+      </a>
+      <a href="#servicos" class="btn-outline">Ver como posso ajudar</a>
+    </div>
+    <div class="hero-trust">
+      <div class="ht-item">
+        <div class="ht-icon">⚖️</div>
+        <div class="ht-txt"><b>OAB/MS</b>Inscrita</div>
+      </div>
+      <div class="ht-sep"></div>
+      <div class="ht-item">
+        <div class="ht-icon">🎗️</div>
+        <div class="ht-txt"><b>Oncologia</b>Especialidade</div>
+      </div>
+      <div class="ht-sep"></div>
+      <div class="ht-item">
+        <div class="ht-icon">📍</div>
+        <div class="ht-txt"><b>MS · RJ</b>+ remoto</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RIBBON -->
+<div class="ribbon">
+  <div class="ribbon-inner">
+    <span class="r-item">Medicamentos de Alto Custo <span class="r-sep">✦</span></span>
+    <span class="r-item">Pacientes Oncológicos <span class="r-sep">✦</span></span>
+    <span class="r-item">Negativas de Plano de Saúde <span class="r-sep">✦</span></span>
+    <span class="r-item">Liminar em 72h <span class="r-sep">✦</span></span>
+    <span class="r-item">Revisão IRPF — Saúde <span class="r-sep">✦</span></span>
+    <span class="r-item">Advocacia Humanizada <span class="r-sep">✦</span></span>
+    <span class="r-item">Atendimento Remoto <span class="r-sep">✦</span></span>
+    <span class="r-item">Medicamentos de Alto Custo <span class="r-sep">✦</span></span>
+    <span class="r-item">Pacientes Oncológicos <span class="r-sep">✦</span></span>
+    <span class="r-item">Negativas de Plano de Saúde <span class="r-sep">✦</span></span>
+    <span class="r-item">Liminar em 72h <span class="r-sep">✦</span></span>
+    <span class="r-item">Revisão IRPF — Saúde <span class="r-sep">✦</span></span>
+    <span class="r-item">Advocacia Humanizada <span class="r-sep">✦</span></span>
+    <span class="r-item">Atendimento Remoto <span class="r-sep">✦</span></span>
+  </div>
+</div>
+
+<!-- SOBRE -->
+<section class="sec-sobre reveal" id="sobre">
+  <div class="sobre-grid">
+    <div class="sobre-text">
+      <div class="s-tag"><span class="s-tag-line"></span><span class="s-tag-txt">Quem sou</span></div>
+      <h2 class="s-h">Advogada por escolha.<br><em>Humanista por essência.</em></h2>
+      <p class="s-p">Há mais de 15 anos acompanho pessoas nos momentos em que a saúde e o sistema jurídico se cruzam — e essa intersecção pode ser cruel. Escolhi o Direito da Saúde porque acredito que ninguém deveria travar uma batalha sozinho enquanto precisa de cuidado.</p>
+      <div class="sobre-quote">
+        <p>"Quando um familiar foi diagnosticado, percebi que o sistema de saúde pode ser um labirinto. Decidi me tornar o fio que guia as pessoas para a saída."</p>
+        <cite>— Valéria Neves</cite>
+      </div>
+      <p class="s-p">Com atuação no Mato Grosso do Sul e no Rio de Janeiro, atendo presencialmente e de forma remota. Minha especialidade são pacientes oncológicos e casos de alto custo — porque é justamente aí que o impacto da advocacia é mais urgente e mais real.</p>
+      <div class="sobre-pills">
+        <span class="pill">Direito da Saúde</span>
+        <span class="pill">Pacientes Oncológicos</span>
+        <span class="pill">Liminares Urgentes</span>
+        <span class="pill">Revisão IRPF</span>
+        <span class="pill">MS · RJ · Brasil</span>
+        <span class="pill">Atendimento Remoto</span>
+      </div>
+    </div>
+    <div class="sobre-visual reveal reveal-delay">
+      <div class="sobre-photo">
+        <div class="sobre-photo-icon">👩‍⚖️</div>
+        <div class="sobre-photo-label">Foto de Valéria Neves</div>
+      </div>
+      <div class="sobre-name-card">
+        <div class="snc-name">Valéria Neves</div>
+        <div class="snc-role">Advogada · Direito da Saúde</div>
+        <div class="snc-oab">OAB/MS · +15 anos de atuação</div>
+      </div>
+      <div class="sobre-acc-circle">+800<br>famílias</div>
+    </div>
+  </div>
+</section>
+
+<!-- DOR -->
+<section class="sec-dor reveal" id="dor">
+  <div class="dor-intro">
+    <div class="s-tag"><span class="s-tag-line"></span><span class="s-tag-txt">O problema</span></div>
+    <h2 class="s-h">O sistema foi feito<br>para confundir. <em>Não para proteger.</em></h2>
+    <p class="s-p">Quando você mais precisa, planos negam, filas se formam e burocracias aparecem. Mas a lei está do seu lado — e eu estou aqui para ativá-la.</p>
+    <div class="alert-strip">
+      <div class="as-label">A lei é clara</div>
+      <div class="as-text">"O acesso à saúde é direito fundamental. Nenhum plano pode negar o que a medicina reconhece como necessário ao tratamento."</div>
+      <div class="as-sub">Art. 196 CF/88 · Súmula 469 STJ · Temas 1082 e 1083</div>
+    </div>
+  </div>
+  <div class="dor-grid">
+    <div class="dor-card">
+      <div class="dor-card-icon">🚫</div>
+      <div class="dor-card-title">Plano negou o tratamento</div>
+      <div class="dor-card-desc">Medicamento prescrito recusado. Procedimento excluído por "cláusula contratual". Cobertura negada para doença preexistente. Isso tem solução jurídica — e rápida.</div>
+      <a href="https://wa.me/5567999999999" class="dor-cta-inline" target="_blank">Verificar meu caso →</a>
+    </div>
+    <div class="dor-card">
+      <div class="dor-card-icon">⏳</div>
+      <div class="dor-card-title">SUS não tem prazo</div>
+      <div class="dor-card-desc">Cirurgia marcada para daqui 8 meses. Consulta especializada com espera de um ano. Quando há urgência clínica, o judiciário pode agir em 24 horas.</div>
+      <a href="https://wa.me/5567999999999" class="dor-cta-inline" target="_blank">Verificar meu caso →</a>
+    </div>
+    <div class="dor-card">
+      <div class="dor-card-icon">🎗️</div>
+      <div class="dor-card-title">Câncer e alto custo</div>
+      <div class="dor-card-desc">Imunoterapia, quimioterapia oral, medicamentos-alvo negados por custo elevado. O diagnóstico de câncer cria urgência legal máxima — liminares em 24 a 72 horas.</div>
+      <a href="https://wa.me/5567999999999" class="dor-cta-inline" target="_blank">Verificar meu caso →</a>
+    </div>
+    <div class="dor-card">
+      <div class="dor-card-icon">💰</div>
+      <div class="dor-card-title">Pagou mais imposto do que devia</div>
+      <div class="dor-card-desc">Gastos com saúde, terapias e educação dos últimos 5 anos podem ser revisados. Muita gente recupera valores significativos sem saber que tinha esse direito.</div>
+      <a href="https://wa.me/5567999999999" class="dor-cta-inline" target="_blank">Verificar meu caso →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section class="sec-servicos reveal" id="servicos">
+  <div class="serv-head">
+    <div class="s-tag"><span class="s-tag-line"></span><span class="s-tag-txt">O que faço</span></div>
+    <h2 class="s-h">Como posso <em>te ajudar</em></h2>
+    <p class="s-p">Cada caso é único. Cada pessoa merece uma estratégia feita para a sua realidade.</p>
+  </div>
+  <div class="serv-list">
+    <div class="serv-row">
+      <div class="serv-row-num">01</div>
+      <div class="serv-row-content">
+        <div class="serv-row-icon">⚖️</div>
+        <div class="serv-row-body">
+          <div class="serv-row-title">Negativas de Plano de Saúde</div>
+          <div class="serv-row-desc">Ação judicial para obrigar o plano a fornecer tratamentos, medicamentos ou procedimentos recusados. Pedido de liminar para casos urgentes.</div>
+          <div class="serv-row-tags">
+            <span class="serv-tag">Tutela de Urgência</span>
+            <span class="serv-tag">ANS</span>
+            <span class="serv-tag">Liminar Rápida</span>
+          </div>
+        </div>
+        <div class="serv-row-arrow">→</div>
+      </div>
+    </div>
+    <div class="serv-row feat">
+      <div class="serv-row-num">02</div>
+      <div class="serv-row-content">
+        <div class="serv-row-icon">🎗️</div>
+        <div class="serv-row-body">
+          <div class="serv-row-title">Pacientes Oncológicos</div>
+          <div class="serv-row-desc">Especialidade que carrego com o coração. Garantia de acesso a quimioterapia, imunoterapia, medicamentos-alvo e cuidados paliativos — com a urgência que o diagnóstico exige.</div>
+          <div class="serv-row-tags">
+            <span class="serv-tag">Alta Complexidade</span>
+            <span class="serv-tag">Urgência Máxima</span>
+            <span class="serv-tag">ANVISA</span>
+          </div>
+        </div>
+        <div class="serv-row-arrow">→</div>
+      </div>
+    </div>
+    <div class="serv-row">
+      <div class="serv-row-num">03</div>
+      <div class="serv-row-content">
+        <div class="serv-row-icon">🏥</div>
+        <div class="serv-row-body">
+          <div class="serv-row-title">Medicamentos pelo SUS</div>
+          <div class="serv-row-desc">Ação contra o Estado para fornecimento de medicamentos de alto custo não padronizados ou com prazo inaceitável de espera.</div>
+          <div class="serv-row-tags">
+            <span class="serv-tag">Judicialização</span>
+            <span class="serv-tag">Saúde Pública</span>
+            <span class="serv-tag">MS · RJ</span>
+          </div>
+        </div>
+        <div class="serv-row-arrow">→</div>
+      </div>
+    </div>
+    <div class="serv-row">
+      <div class="serv-row-num">04</div>
+      <div class="serv-row-content">
+        <div class="serv-row-icon">💰</div>
+        <div class="serv-row-body">
+          <div class="serv-row-title">Revisão IRPF — Saúde e Educação</div>
+          <div class="serv-row-desc">Recuperação de imposto dos últimos 5 anos. Gastos médicos, terapias, medicamentos e educação podem ser deduzidos retroativamente — muita gente deixa dinheiro passar sem saber.</div>
+          <div class="serv-row-tags">
+            <span class="serv-tag">Últimos 5 Anos</span>
+            <span class="serv-tag">Declaração Retificada</span>
+            <span class="serv-tag">Receita Federal</span>
+          </div>
+        </div>
+        <div class="serv-row-arrow">→</div>
+      </div>
+    </div>
+    <div class="serv-row">
+      <div class="serv-row-num">05</div>
+      <div class="serv-row-content">
+        <div class="serv-row-icon">📑</div>
+        <div class="serv-row-body">
+          <div class="serv-row-title">Consultoria Preventiva</div>
+          <div class="serv-row-desc">Análise do seu contrato de plano, orientação sobre seus direitos antes de precisar urgência, e acompanhamento de tratamentos em andamento.</div>
+          <div class="serv-row-tags">
+            <span class="serv-tag">Contratos</span>
+            <span class="serv-tag">Cobertura</span>
+            <span class="serv-tag">Preventivo</span>
+          </div>
+        </div>
+        <div class="serv-row-arrow">→</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MÉTODO -->
+<div class="sec-metodo reveal" id="metodo">
+  <div class="metodo-wrap">
+    <div class="met-left">
+      <div class="s-tag"><span class="s-tag-line"></span><span class="s-tag-txt">Como atendo</span></div>
+      <h2 class="s-h">Da escuta<br>à <em>vitória.</em></h2>
+      <p class="s-p">Cada caso começa pela pessoa — não pelo processo. Só depois de entender sua situação de verdade é que traço a estratégia certa.</p>
+    </div>
+    <div class="met-right">
+      <div class="met-steps">
+        <div class="met-step">
+          <div class="met-step-num">1</div>
+          <div class="met-step-icon">🎧</div>
+          <div class="met-step-title">Escuta sem pressa</div>
+          <div class="met-step-desc">Antes de qualquer documento, você me conta o que está acontecendo — com a sua linguagem, no seu tempo. Nada de juridiquês. Quero entender a sua história.</div>
+        </div>
+        <div class="met-step">
+          <div class="met-step-num">2</div>
+          <div class="met-step-icon">🔍</div>
+          <div class="met-step-title">Análise técnica honesta</div>
+          <div class="met-step-desc">Avalio a documentação médica, o contrato ou a situação com o SUS. Te apresento com clareza o que é possível fazer, o que a lei garante e qual caminho faz mais sentido para você.</div>
+        </div>
+        <div class="met-step">
+          <div class="met-step-num">3</div>
+          <div class="met-step-icon">⚡</div>
+          <div class="met-step-title">Ação rápida quando necessário</div>
+          <div class="met-step-desc">Em casos urgentes, peticionamos imediatamente com pedido de tutela antecipada. Em saúde, liminares podem ser concedidas em 24 a 72 horas — e eu sei como construir esse argumento.</div>
+        </div>
+        <div class="met-step">
+          <div class="met-step-num">4</div>
+          <div class="met-step-icon">💬</div>
+          <div class="met-step-title">Acompanhamento próximo, de verdade</div>
+          <div class="met-step-desc">Você vai saber o que acontece a cada passo. Sem desaparecer no processo. Sem te deixar sem resposta. Isso é o que chamo de advocacia humanizada — e é o único jeito que conheço de trabalhar.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DEPOIMENTOS -->
+<section class="sec-dep reveal" id="depoimentos">
+  <div class="dep-head">
+    <div>
+      <div class="s-tag"><span class="s-tag-line"></span><span class="s-tag-txt">Histórias reais</span></div>
+      <h2 class="s-h">O que dizem quem<br><em>teve seu direito garantido</em></h2>
+    </div>
+    <a href="https://wa.me/5567999999999" class="btn-rose" target="_blank">Quero meu resultado →</a>
+  </div>
+  <div class="dep-grid">
+    <div class="dep-card">
+      <div class="dep-stars">★★★★★</div>
+      <div class="dep-text">"Quando o plano negou a quimioterapia da minha mãe, achei que estávamos sozinhos. A Valéria conseguiu a liminar em dois dias. Dois dias que valeram meses de tratamento."</div>
+      <div class="dep-author">
+        <div class="dep-init">R</div>
+        <div>
+          <div class="dep-name">Renata M.</div>
+          <div class="dep-role">Familiar de paciente oncológica · Campo Grande/MS</div>
+        </div>
+      </div>
+    </div>
+    <div class="dep-card">
+      <div class="dep-stars">★★★★★</div>
+      <div class="dep-text">"Não sabia que podia recuperar imposto dos últimos 5 anos pelos meus gastos de saúde. A revisão do IRPF me devolveu mais de R$ 8.000. Indico para todo mundo."</div>
+      <div class="dep-author">
+        <div class="dep-init">M</div>
+        <div>
+          <div class="dep-name">Marcos T.</div>
+          <div class="dep-role">Paciente em tratamento · Rio de Janeiro/RJ</div>
+        </div>
+      </div>
+    </div>
+    <div class="dep-card">
+      <div class="dep-stars">★★★★★</div>
+      <div class="dep-text">"A Valéria é diferente. Ela me ligava para saber como eu estava, não só para dar notícias do processo. Saí daquela situação com o tratamento garantido e me sentindo ouvida."</div>
+      <div class="dep-author">
+        <div class="dep-init">C</div>
+        <div>
+          <div class="dep-name">Claudia F.</div>
+          <div class="dep-role">Paciente · Atendimento remoto</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- URGÊNCIA -->
+<div class="sec-urgencia reveal">
+  <div class="urg-wrap">
+    <div class="urg-left">
+      <div class="urg-left-c">
+        <div class="s-tag"><span class="s-tag-line" style="background:rgba(255,255,255,.4)"></span><span class="s-tag-txt" style="color:rgba(255,255,255,.7)">Por que agir agora</span></div>
+        <h2 class="s-h" style="color:#fff;">Em saúde, o tempo<br><em style="color:rgba(255,255,255,.78)">não espera.</em></h2>
+        <p class="s-p" style="color:rgba(255,255,255,.72);max-width:360px;">Cada semana sem tratamento é uma semana a mais de sofrimento. E juridicamente, alguns direitos têm prazo. Não espere a situação piorar para buscar ajuda.</p>
+        <div class="urg-quote">
+          <p>"O judiciário pode obrigar planos e o Estado a fornecerem tratamentos em 24 a 72 horas quando há urgência médica comprovada."</p>
+          <cite>Tutela de Urgência · Art. 300, CPC</cite>
+        </div>
+        <a href="https://wa.me/5567999999999" class="btn-white" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Falar com a Valéria agora
+        </a>
+      </div>
+    </div>
+    <div class="urg-right">
+      <div class="s-tag"><span class="s-tag-line"></span><span class="s-tag-txt">Prioridades</span></div>
+      <h3 class="s-h" style="font-size:clamp(26px,2.5vw,38px);margin-bottom:32px;">Como classifico<br>cada situação</h3>
+      <div class="urg-items">
+        <div class="urg-item">
+          <div class="urg-dot-wrap"><div class="urg-dot dot-rose"></div></div>
+          <div>
+            <div class="urg-label">Urgência máxima</div>
+            <div class="urg-title">Negativa oncológica</div>
+            <div class="urg-desc">Câncer + negativa de plano ou SUS = prioridade absoluta. Liminar em 24h é possível com documentação correta.</div>
+          </div>
+        </div>
+        <div class="urg-item">
+          <div class="urg-dot-wrap"><div class="urg-dot dot-rose" style="opacity:.6;"></div></div>
+          <div>
+            <div class="urg-label">Alta prioridade</div>
+            <div class="urg-title">Medicamento prescrito negado</div>
+            <div class="urg-desc">Se o médico indicou e o plano negou, a lei protege você. Avaliação em 24h, ação em 48h.</div>
+          </div>
+        </div>
+        <div class="urg-item">
+          <div class="urg-dot-wrap"><div class="urg-dot dot-warm"></div></div>
+          <div>
+            <div class="urg-label">Recuperação fiscal</div>
+            <div class="urg-title">Revisão IRPF</div>
+            <div class="urg-desc">Cada declaração tem prazo de 5 anos para retificação. Cada ano que passa, uma janela fecha.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section class="sec-faq reveal" id="faq">
+  <div class="s-tag"><span class="s-tag-line"></span><span class="s-tag-txt">Dúvidas frequentes</span></div>
+  <h2 class="s-h" style="margin-bottom:52px;">Tiro suas <em>dúvidas</em></h2>
+  <div class="faq-wrap">
+    <div class="faq-list">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <div class="faq-q-text">Meu plano pode negar um medicamento prescrito pelo médico?</div>
+        <div class="faq-chevron">+</div>
+      </div>
+      <div class="faq-a">Não. Se o medicamento tem indicação médica clara e é necessário ao seu tratamento, o plano é obrigado a cobrir — mesmo que não esteja na lista padrão. O STJ tem consolidado esse entendimento (Temas 1082 e 1083). É possível obter liminar em até 72 horas.</div>
+
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <div class="faq-q-text">Quanto tempo leva para conseguir uma liminar em saúde?</div>
+        <div class="faq-chevron">+</div>
+      </div>
+      <div class="faq-a">Em casos de urgência médica documentada, entre 24 e 72 horas. Para isso, o laudo médico precisa ser detalhado, com a prescrição correta e, se possível, a negativa por escrito do plano. Esses três documentos são a base da estratégia.</div>
+
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <div class="faq-q-text">Como funciona a revisão do IRPF por despesas de saúde?</div>
+        <div class="faq-chevron">+</div>
+      </div>
+      <div class="faq-a">É possível retificar declarações dos últimos 5 anos para incluir gastos médicos que ficaram de fora — consultas, exames, cirurgias, terapias, medicamentos com recibo. Em muitos casos isso gera restituição ou redução de imposto. Cada situação exige análise individual.</div>
+
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <div class="faq-q-text">Atende fora de Campo Grande e Rio de Janeiro?</div>
+        <div class="faq-chevron">+</div>
+      </div>
+      <div class="faq-a">Sim. O atendimento é feito 100% de forma remota para todo o Brasil — especialmente para ações contra planos de saúde e revisão de IRPF, que não exigem presença física do cliente.</div>
+
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <div class="faq-q-text">Qual é o primeiro passo para iniciar o atendimento?</div>
+        <div class="faq-chevron">+</div>
+      </div>
+      <div class="faq-a">Me manda uma mensagem no WhatsApp contando o que está acontecendo. Sem formulário, sem formalidade. A partir daí agendamos uma conversa para entender seu caso e te dizer com honestidade o que é possível fazer.</div>
+    </div>
+    <div>
+      <div class="faq-cta">
+        <div class="s-tag"><span class="s-tag-line" style="background:rgba(255,255,255,.4)"></span><span class="s-tag-txt" style="color:rgba(255,255,255,.65)">Próximo passo</span></div>
+        <div class="faq-cta-h">Seu caso merece uma <em>conversa real.</em></div>
+        <div class="faq-cta-p">Sem formulário, sem jurisprudência explicada em voz alta. Me conta o que está acontecendo — e eu te digo com honestidade o que o direito pode fazer por você.</div>
+        <a href="https://wa.me/5567999999999" class="btn-white" target="_blank">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Falar agora no WhatsApp
+        </a>
+        <div class="faq-cta-note">Resposta em até 2 horas em dias úteis</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARCERIA -->
+<div class="sec-parceria reveal">
+  <div class="parc-inner">
+    <div class="parc-vn">
+      Valéria Neves
+      <small>Advocacia Humanizada</small>
+    </div>
+    <div class="parc-div"></div>
+    <div class="parc-txt">
+      <strong>Uma advocacia completa para médicos, clínicas e pacientes.</strong> Atuamos em parceria com a Sitorski Advogados Associados — somando expertise em direito da saúde, defesa médica administrativa e planejamento tributário para profissionais da área médica.
+    </div>
+    <div class="parc-div"></div>
+    <div class="parc-si">
+      SITORSKI
+      <small>Advogados Associados</small>
+    </div>
+  </div>
+</div>
+
+<!-- CTA FINAL -->
+<div class="sec-cta reveal">
+  <div class="cta-inner">
+    <div class="cta-eyebrow">Próximo passo</div>
+    <h2 class="cta-h">Não espere a situação<br><em>piorar para agir.</em></h2>
+    <p class="cta-p">O direito à saúde existe. A lei protege você. Mas ele precisa ser reivindicado — com estratégia, com documentação e com quem conhece o caminho. Me conta o seu caso.</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/5567999999999" class="btn-rose" target="_blank">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.764-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Falar com a Valéria
+      </a>
+      <a href="mailto:contato@valerianeves.adv.br" class="btn-outline" style="border-color:rgba(243,237,227,.25);color:rgba(243,237,227,.7);">Enviar e-mail</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-brand-name">Valéria Neves</div>
+      <div class="footer-brand-sub">Advocacia Humanizada · Direito da Saúde</div>
+      <p class="footer-brand-p">Especialista em judicialização da saúde, pacientes oncológicos e revisão tributária. Campo Grande/MS, Rio de Janeiro/RJ e todo o Brasil de forma remota.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Serviços</div>
+      <div class="footer-links">
+        <a href="#servicos">Negativas de Plano de Saúde</a>
+        <a href="#servicos">Pacientes Oncológicos</a>
+        <a href="#servicos">Medicamentos de Alto Custo</a>
+        <a href="#servicos">Revisão IRPF — Saúde</a>
+        <a href="#servicos">Medicamentos pelo SUS</a>
+        <a href="#servicos">Consultoria Preventiva</a>
+      </div>
+    </div>
+    <div class="footer-contact">
+      <div class="footer-col-title">Contato</div>
+      <div class="fci">
+        <div class="fci-label">WhatsApp</div>
+        <div class="fci-val"><a href="https://wa.me/5567999999999" target="_blank">(67) 9 9999-9999</a></div>
+      </div>
+      <div class="fci">
+        <div class="fci-label">E-mail</div>
+        <div class="fci-val"><a href="mailto:contato@valerianeves.adv.br">contato@valerianeves.adv.br</a></div>
+      </div>
+      <div class="fci">
+        <div class="fci-label">Localização</div>
+        <div class="fci-val">Campo Grande/MS · Rio de Janeiro/RJ</div>
+      </div>
+      <div class="fci">
+        <div class="fci-label">Instagram</div>
+        <div class="fci-val"><a href="https://instagram.com/valerianeves.advogada" target="_blank">@valerianeves.advogada</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div class="footer-bar-txt">© 2025 Valéria Neves Advocacia. Todos os direitos reservados.</div>
+    <div class="footer-bar-oab">OAB/MS · Advocacia Humanizada</div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+
+// Reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);} });
+}, {threshold:.08});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// FAQ
+function toggleFaq(el){
+  const ans = el.nextElementSibling;
+  const isOpen = el.classList.contains('open');
+  document.querySelectorAll('.faq-q.open').forEach(q => {
+    q.classList.remove('open');
+    q.nextElementSibling.classList.remove('open');
+  });
+  if(!isOpen){el.classList.add('open');ans.classList.add('open');}
+}
+</script>
+</body>
+</html>
